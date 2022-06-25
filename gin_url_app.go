@@ -30,7 +30,6 @@ func main() {
 }
 
 func set_handlers(router *gin.Engine) {
-	// FYI path must be URL encoded i.e. http://localhost:8080/urlinfo/1/www.google.com:443/%2Fpath%2Fto%2Fthing%3Fa%3D5%0A
 	router.GET("/urlinfo/1/:hostname_and_port/:path", func(c *gin.Context) {
 
 		rdb := get_new_redis_client()
