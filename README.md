@@ -1,4 +1,9 @@
 # assignment
+
+Design
+
+![alt text](https://github.com/ibh1127/assignment/blob/main/Design.png)
+
 Usage:
 1. docker build -t ian/assignment:1 -t ian/assignment:latest .
 2. docker run -p 127.0.0.1:6379:6379 -d redis
