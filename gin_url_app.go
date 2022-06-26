@@ -100,7 +100,7 @@ func get_url_key(hostname_and_port string, path string) string {
 
 func get_new_redis_client() *redis.Client {
 	return redis.NewClient(&redis.Options{
-		Addr:     "host.docker.internal:6379", // For development purposes this connection string assumes redis is running on the same host
+		Addr:     "127.0.0.1:6379", // For development purposes this connection string assumes redis is running on the same host
 		Password: "",                          // no password set
 		DB:       0,                           // use default DB
 	})
