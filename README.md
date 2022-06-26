@@ -57,7 +57,7 @@ requests.put('http://localhost:8080/urlinfo/1/www.google.com:443/%2Fpath%2Fto%2F
 ## Technologies Utilized:
 
 Languages: Go
-- Go provides great performance and concurrency with its light-weight runtime and use of coroutines known as goroutines.
+- Go provides great performance and concurrency with its light-weight runtime and use of coroutines (known as goroutines).
 It should outperform other languages/frameworks that use event-loops or thread pools.
 
 Web Service Framework: Gin
@@ -77,7 +77,7 @@ how might you scale this beyond the memory capacity of this VM?
 I have implemented this by utilizing Redis as our database which can live on a separate VM/host.
 Redis can scale horizontally to provide additional storage.
 
-Given more time I would implement a secondary storage method such as DynamoDB since scaling Redis could be very expensive.
+Given more time I would implement a secondary storage method such as DynamoDB given that scaling Redis could be very expensive.
 DynamoDB could give us cheaper storage and store less-frequently accessed URLs. This would increase latenecy, but reduce storage 
 costs for a large URL list.
 
@@ -86,8 +86,7 @@ The number of requests may exceed the capacity of this VM, how
 might you solve that? Bonus if you implement this.
 ```
 
-This problem could be solved by horizontally scaling the docker container that I have created. The reason that this solution can scale horizontally 
-is that the application is stateless, due to the fact that our state is stored on Redis.
+This problem could be solved by horizontally scaling the gin app horizontally behind a load balancer. The reason that the gin app can easily scale horizontally is that the application is stateless, due to the fact that our state is stored on Redis.
 The horizontal scaling could be provided by a variety of methods and cloud services such as AWS ECS.
 
 ``` 
@@ -104,4 +103,4 @@ with updates arriving every 10 minutes.
 
 This allows URLs to be added to the redis database through the web service. 
 Although this handler only handles a single URL at a time, 5000 URLs a day should be no big deal for this design.
-Given more time to work on this project, a PUT handler could be created to for bulk inserts/updates.
+Given more time to work on this project, a second PUT handler could be created for bulk inserts/updates.
