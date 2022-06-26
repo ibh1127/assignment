@@ -43,7 +43,7 @@ func set_handlers(router *gin.Engine) {
 		c.JSON(http.StatusOK, gin.H{"isAllowed": is_url_allowed})
 	})
 
-	router.POST("/urlinfo/1/:hostname_and_port/:path", func(c *gin.Context) {
+	router.PUT("/urlinfo/1/:hostname_and_port/:path", func(c *gin.Context) {
 		var json URLInfo
 
 		rdb := get_new_redis_client()
