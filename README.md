@@ -28,18 +28,24 @@ This PUT uses the same json object to insert/update a URL into database indicati
 
 ## Quickstart:
 ```
+git clone https://github.com/ibh1127/assignment.git
+```
+```
+cd assignment
+```
+```
 docker build -t ian/assignment:1 -t ian/assignment:latest .
 ```
 ```
-docker run -p 127.0.0.1:6379:6379 -d redis
+docker run -p 6379:6379 -d --net host redis
 ```
 ```
-docker run -p 8080:8080 ian/assignment:latest
+docker run -p 8080:8080 -d --net host  ian/assignment:latest
 ```
 
 ### GET Test (curl command)
 ```
-curl http://localhost:8080/urlinfo/1/www.google.com:443/%2Fpath%2Fto%2Fthing%3Fa%3D5%0A
+curl http://localhost:8080/urlinfo/1/www.google.com:443/%2Fpath%2Fto%2Fthing%3Fa%3D5%0A -H "Accept: application/json" 
 ```
 
 ### PUT Test (python script)
